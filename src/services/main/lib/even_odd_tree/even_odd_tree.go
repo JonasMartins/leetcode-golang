@@ -7,11 +7,10 @@ import (
 type TreeNode = utils.TreeNode
 
 func IsEvenOddTree(root *TreeNode) bool {
-
 	if root == nil {
 		return false
 	}
-	if NumberIsEven(&root.Val) {
+	if utils.NumberIsEven(&root.Val) {
 		return false
 	}
 	isEvenLevel := false
@@ -27,13 +26,13 @@ func IsEvenOddTree(root *TreeNode) bool {
 		currLevelLength = len(*(*treeLevels)[level])
 		// fmt.Printf("Level %d -> \n", level)
 		intLevel = int(level)
-		isEvenLevel = NumberIsEven(&intLevel)
+		isEvenLevel = utils.NumberIsEven(&intLevel)
 		lastNonNilNodeIndex, previousValue := 0, 0
 		for ; currLevelIter < currLevelLength; currLevelIter += 1 {
 			currNode = (*(*treeLevels)[level])[currLevelIter]
 			if currNode != nil {
 				if isEvenLevel {
-					if NumberIsEven(&currNode.Val) {
+					if utils.NumberIsEven(&currNode.Val) {
 						return false
 					}
 					lastNonNilNodeIndex = GetLastNonNillPreviousNodeCompare((*treeLevels)[level], currLevelIter)
@@ -45,7 +44,7 @@ func IsEvenOddTree(root *TreeNode) bool {
 					}
 
 				} else {
-					if !NumberIsEven(&currNode.Val) {
+					if !utils.NumberIsEven(&currNode.Val) {
 						return false
 					}
 					lastNonNilNodeIndex = GetLastNonNillPreviousNodeCompare((*treeLevels)[level], currLevelIter)
@@ -85,10 +84,6 @@ func GetLastNonNillPreviousNodeCompare(level *[]*TreeNode, currNodeIndex int) in
 		}
 	}
 	return -1
-}
-
-func NumberIsEven(n *int) bool {
-	return *n&1 == 0
 }
 
 func NewNode(val int) *TreeNode {

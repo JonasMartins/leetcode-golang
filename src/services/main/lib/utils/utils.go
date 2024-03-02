@@ -19,3 +19,7 @@ func CheckIfALevelIsEmpty(level *[]*TreeNode) bool {
 	}
 	return true
 }
+
+func NumberIsEven(n *int) bool {
+	return *n&1 == 0
+}
