@@ -1,4 +1,4 @@
-package removenthfromend
+package linkedlistcycle
 
 import (
 	"log"
@@ -6,16 +6,14 @@ import (
 	"testing"
 )
 
-func TestRemoveNthFromEnd(t *testing.T) {
+func TestHasCycle(t *testing.T) {
 	defer func() {
 		log.Println("Deferred tearing down.")
 	}()
-	input := []int{1}
+	input := []int{3, 2, 0, -4}
 	head := utils.GenerateLinkedList(&input)
-	head = RemoveNthFromEnd(head, 1)
-	if head == nil {
+	result := HasCycle(head)
+	if result {
 		t.Fail()
 	}
-
-	log.Println("test finished")
 }
