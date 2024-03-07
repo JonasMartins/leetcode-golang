@@ -24,7 +24,6 @@ func DiameterOptimized(root *TreeNode, h *int) int {
 	rDiameter = DiameterOptimized(root.Right, &rh)
 	*h = Max(lh, rh) + 1
 	return Max(lh+rh+1, Max(lDiameter, rDiameter)) - 1
-
 }
 
 func TreeHeight(root *TreeNode) int {
@@ -58,7 +57,7 @@ func NewNode(val int) *TreeNode {
 
 func (t *TreeNode) Insert(val int) *TreeNode {
 	var current, parent *TreeNode = nil, nil
-	var node TreeNode = TreeNode{
+	node := TreeNode{
 		Val:   val,
 		Left:  nil,
 		Right: nil,
