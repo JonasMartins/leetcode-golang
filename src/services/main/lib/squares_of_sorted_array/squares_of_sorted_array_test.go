@@ -21,5 +21,4 @@ func TestModel(t *testing.T) {
 	if len(result) == 0 {
 		t.Fail()
 	}
-
 }
